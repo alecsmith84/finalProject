@@ -27,6 +27,8 @@
 		D4FF94B6226DFBD4004FD89C /* theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D4FF94B0226DFBD4004FD89C /* theme.mp3 */; };
 		D4FF94B7226DFBD4004FD89C /* bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D4FF94B1226DFBD4004FD89C /* bomb.mp3 */; };
 		D4FF94B8226DFBD4004FD89C /* Sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = D4FF94B2226DFBD4004FD89C /* Sprites.atlas */; };
+		D4FF94BA226EA783004FD89C /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF94B9226EA783004FD89C /* Array2D.swift */; };
+		D4FF94BC226EAEF9004FD89C /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF94BB226EAEF9004FD89C /* Block.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		D4FF94B0226DFBD4004FD89C /* theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = theme.mp3; sourceTree = "<group>"; };
 		D4FF94B1226DFBD4004FD89C /* bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bomb.mp3; sourceTree = "<group>"; };
 		D4FF94B2226DFBD4004FD89C /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		D4FF94B9226EA783004FD89C /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
+		D4FF94BB226EAEF9004FD89C /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +112,9 @@
 				D4FF9478226DFA4A004FD89C /* AppDelegate.swift */,
 				D4FF947C226DFA4A004FD89C /* Actions.sks */,
 				D4FF947E226DFA4A004FD89C /* GameScene.swift */,
+				D4FF94BB226EAEF9004FD89C /* Block.swift */,
 				D4FF9480226DFA4A004FD89C /* GameViewController.swift */,
+				D4FF94B9226EA783004FD89C /* Array2D.swift */,
 				D4FF9482226DFA4A004FD89C /* Main.storyboard */,
 				D4FF949E226DFB6A004FD89C /* assets */,
 				D4FF9485226DFA4B004FD89C /* Assets.xcassets */,
@@ -277,6 +283,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4FF947F226DFA4A004FD89C /* GameScene.swift in Sources */,
+				D4FF94BA226EA783004FD89C /* Array2D.swift in Sources */,
+				D4FF94BC226EAEF9004FD89C /* Block.swift in Sources */,
 				D4FF9481226DFA4A004FD89C /* GameViewController.swift in Sources */,
 				D4FF9479226DFA4A004FD89C /* AppDelegate.swift in Sources */,
 			);
