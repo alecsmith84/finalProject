@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D481634422772DBF00394E87 /* TShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D481634322772DBF00394E87 /* TShape.swift */; };
+		D481634622772F3500394E87 /* LineShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D481634522772F3500394E87 /* LineShape.swift */; };
+		D48163482277303400394E87 /* LShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48163472277303400394E87 /* LShape.swift */; };
+		D481634A227731BE00394E87 /* JShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4816349227731BE00394E87 /* JShape.swift */; };
+		D481634C2277324E00394E87 /* SShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D481634B2277324E00394E87 /* SShape.swift */; };
+		D481634E2277335E00394E87 /* ZShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D481634D2277335E00394E87 /* ZShape.swift */; };
+		D4816350227C746A00394E87 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D481634F227C746A00394E87 /* Game.swift */; };
 		D4FF9479226DFA4A004FD89C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF9478226DFA4A004FD89C /* AppDelegate.swift */; };
 		D4FF947D226DFA4A004FD89C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = D4FF947C226DFA4A004FD89C /* Actions.sks */; };
 		D4FF947F226DFA4A004FD89C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF947E226DFA4A004FD89C /* GameScene.swift */; };
@@ -30,6 +37,7 @@
 		D4FF94BA226EA783004FD89C /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF94B9226EA783004FD89C /* Array2D.swift */; };
 		D4FF94BC226EAEF9004FD89C /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF94BB226EAEF9004FD89C /* Block.swift */; };
 		D4FF94BE226F632D004FD89C /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF94BD226F632D004FD89C /* Shape.swift */; };
+		D4FF94C022709FBC004FD89C /* SquareShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF94BF22709FBC004FD89C /* SquareShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +51,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D481634322772DBF00394E87 /* TShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TShape.swift; sourceTree = "<group>"; };
+		D481634522772F3500394E87 /* LineShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineShape.swift; sourceTree = "<group>"; };
+		D48163472277303400394E87 /* LShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LShape.swift; sourceTree = "<group>"; };
+		D4816349227731BE00394E87 /* JShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JShape.swift; sourceTree = "<group>"; };
+		D481634B2277324E00394E87 /* SShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SShape.swift; sourceTree = "<group>"; };
+		D481634D2277335E00394E87 /* ZShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZShape.swift; sourceTree = "<group>"; };
+		D481634F227C746A00394E87 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D4FF9475226DFA4A004FD89C /* final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = final.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4FF9478226DFA4A004FD89C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4FF947C226DFA4A004FD89C /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -70,6 +85,7 @@
 		D4FF94B9226EA783004FD89C /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		D4FF94BB226EAEF9004FD89C /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		D4FF94BD226F632D004FD89C /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		D4FF94BF22709FBC004FD89C /* SquareShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +132,14 @@
 				D4FF947E226DFA4A004FD89C /* GameScene.swift */,
 				D4FF94BB226EAEF9004FD89C /* Block.swift */,
 				D4FF94BD226F632D004FD89C /* Shape.swift */,
+				D481634F227C746A00394E87 /* Game.swift */,
+				D4FF94BF22709FBC004FD89C /* SquareShape.swift */,
+				D481634322772DBF00394E87 /* TShape.swift */,
+				D481634522772F3500394E87 /* LineShape.swift */,
+				D48163472277303400394E87 /* LShape.swift */,
+				D4816349227731BE00394E87 /* JShape.swift */,
+				D481634B2277324E00394E87 /* SShape.swift */,
+				D481634D2277335E00394E87 /* ZShape.swift */,
 				D4FF9480226DFA4A004FD89C /* GameViewController.swift */,
 				D4FF94B9226EA783004FD89C /* Array2D.swift */,
 				D4FF9482226DFA4A004FD89C /* Main.storyboard */,
@@ -285,11 +309,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D48163482277303400394E87 /* LShape.swift in Sources */,
+				D4FF94C022709FBC004FD89C /* SquareShape.swift in Sources */,
 				D4FF947F226DFA4A004FD89C /* GameScene.swift in Sources */,
+				D481634A227731BE00394E87 /* JShape.swift in Sources */,
 				D4FF94BE226F632D004FD89C /* Shape.swift in Sources */,
 				D4FF94BA226EA783004FD89C /* Array2D.swift in Sources */,
+				D481634622772F3500394E87 /* LineShape.swift in Sources */,
+				D481634C2277324E00394E87 /* SShape.swift in Sources */,
+				D481634422772DBF00394E87 /* TShape.swift in Sources */,
+				D4816350227C746A00394E87 /* Game.swift in Sources */,
 				D4FF94BC226EAEF9004FD89C /* Block.swift in Sources */,
 				D4FF9481226DFA4A004FD89C /* GameViewController.swift in Sources */,
+				D481634E2277335E00394E87 /* ZShape.swift in Sources */,
 				D4FF9479226DFA4A004FD89C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
