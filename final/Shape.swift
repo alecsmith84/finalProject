@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+
 let NumOrientations: UInt32 = 4
 
 enum Orientation: Int, CustomStringConvertible {
@@ -24,6 +25,10 @@ enum Orientation: Int, CustomStringConvertible {
         case .TwoSeventy:
             return "270"
         }
+    }
+    
+    static func random() -> Orientation {
+        return Orientation(rawValue:Int(arc4random_uniform(NumOrientations)))!
     }
     
     // returns the next orientation  while rotating
@@ -118,7 +123,7 @@ class Shape: Hashable, CustomStringConvertible {
     }
     
     final func rotateBlocks(orientation: Orientation) {
-        guard let blockRowColumnTranslation: Array<(columnDiff: Int, rowDiff: Int)> = blockRowColumnPositions[orientation] else {
+        guard let blockRowColumnTranslation:Array<(columnDiff: Int, rowDiff: Int)> = blockRowColumnPositions[orientation] else {
             return
         }
         // enumerate function to iterate through array
@@ -127,8 +132,33 @@ class Shape: Hashable, CustomStringConvertible {
             blocks[idx].row = row + diff.rowDiff
         }
     }
+    
+    // I am the man who arranges the blocks
+    final func rotateClockwise() {
+        let newOrientation = Orientation.rotate(orientation: orientation, clockwise: true)
+        rotateBlocks(orientation: newOrientation)
+        orientation = newOrientation
+    }
+    
+    final func rotateCounterClockwise() {
+        let newOrientation = Orientation.rotate(orientation: orientation, clockwise: false)
+        rotateBlocks(orientation: newOrientation)
+        orientation = newOrientation
+    }
+
+    
     final func lowerShapeByOneRow() {
         shiftBy(columns: 0, rows:1)
+    }
+    
+    final func raiseShapeByOneRow() {
+        shiftBy(columns: 0, rows: -1)
+    }
+    final func shiftRightByOneColumn() {
+        shiftBy(columns: 1, rows: 0)
+    }
+    final func shiftLeftByOneColumn() {
+        shiftBy(columns: -1, rows: 0)
     }
     
     // adjust each row and column by row and column
@@ -145,7 +175,7 @@ class Shape: Hashable, CustomStringConvertible {
     final func moveTo(column: Int, row:Int) {
         self.column = column
         self.row = row
-        rotateBlocks(orientation)
+        rotateBlocks(orientation: orientation)
     }
     
     final class func random(startingColumn:Int, startingRow:Int) -> Shape {
@@ -171,5 +201,5 @@ class Shape: Hashable, CustomStringConvertible {
 }
 
 func ==(lhs: Shape, rhs: Shape) -> Bool {
-    return lsh.row == rsh.row && lhs.column == rhs.column
+    return lhs.row == rhs.row && lhs.column == rhs.column
 }

@@ -48,7 +48,7 @@ class GameScene: SKScene {
         addChild(gameLayer)
         
         let gameBoardTexture = SKTexture(imageNamed: "gameboard")
-        let gameBoard = SKSpriteNode(texture: gameBoardTexture, size: CGSizeMake(BlockSize * CGFloat(NumColumns), BlockSize * CGFloat(NumRows)))
+        let gameBoard = SKSpriteNode(texture: gameBoardTexture, size: CGSize(width:BlockSize * CGFloat(NumColumns),height: BlockSize * CGFloat(NumRows)))
         
         gameBoard.anchorPoint = CGPoint(x:0,y:1.0)
         gameBoard.position = LayerPosition
@@ -56,7 +56,16 @@ class GameScene: SKScene {
         shapeLayer.position = LayerPosition
         shapeLayer.addChild(gameBoard)
         gameLayer.addChild(shapeLayer)
+        
+        // play theme music
+       // run(SKAction.repeatForever(SKAction.playSoundFileNamed("/Users/alecsmith/Desktop/Spring The End/xcode apps/final/final/assets/Sounds/theme.mp3", waitForCompletion: true)))
     }
+    
+    // play any sound on demand using this
+    func playSound(sound:String) {
+        run(SKAction.playSoundFileNamed(sound, waitForCompletion: false))
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         // if lastTick is empty then the game is paused
         guard let lastTick = lastTick else {
@@ -86,16 +95,16 @@ class GameScene: SKScene {
         let x = LayerPosition.x + (CGFloat(column) * BlockSize) + (BlockSize / 2)
         let y = LayerPosition.y - ((CGFloat(row) * BlockSize) + (BlockSize / 2))
     
-        return CGPointMake(x,y)
+        return CGPoint(x:x,y:y)
     }
     
-    func addPreviewShapeToScene(shape:Shape,completion:() -> ()) {
+    func addPreviewShapeToScene(shape:Shape,completion:@escaping () -> ()) {
         for block in shape.blocks {
             // adds shape  as the preview
             var texture = textureCache[block.spriteName]
             if texture == nil {
                 texture = SKTexture(imageNamed: block.spriteName)
-            textureCache[block.spriteName] = texture
+                textureCache[block.spriteName] = texture
             }
             
             let sprite = SKSpriteNode(texture: texture)
@@ -119,6 +128,9 @@ class GameScene: SKScene {
             
             sprite.run(SKAction.group([moveAction,fadeInAction]))
         }
+        run(SKAction.wait(forDuration: 0.4), completion: completion)
+    }
+        
         func movePreviewShape(shape:Shape, completion:@escaping () -> ()) {
             for block in shape.blocks {
                 let sprite = block.sprite!
@@ -147,6 +159,64 @@ class GameScene: SKScene {
                     sprite.run(moveToAction)
                 }
             }
+    }
+    
+    // returns each time a line is removed and its animated
+    func animateCollapsingLines(linesToRemove: Array<Array<Block>>, fallenBlocks: Array<Array<Block>>, completion:@escaping () -> ()) {
+        var longestDuration: TimeInterval = 0
+        
+        // how long do we wait till completion runs
+        for (columnIdx, column) in fallenBlocks.enumerated() {
+            for (blockIdx, block) in column.enumerated() {
+                let newPosition = pointForColumn(column: block.column, row: block.row)
+                let sprite = block.sprite!
+                
+                //  this makes it look natural
+                let delay = (TimeInterval(columnIdx) * 0.05) + (TimeInterval(blockIdx) * 0.05)
+                let duration = TimeInterval(((sprite.position.y - newPosition.y) / BlockSize) * 0.1)
+                let moveAction = SKAction.move(to: newPosition, duration: duration)
+                
+                moveAction.timingMode = .easeOut
+                
+                sprite.run(SKAction.sequence([SKAction.wait(forDuration: delay), moveAction]))
+                
+                longestDuration = max(longestDuration, duration + delay)
+            }
         }
+        
+        for rowToRemove in linesToRemove {
+            for block in rowToRemove {
+                // make them shoot everywhere using UIBezierPath
+                
+                let randomRadius = CGFloat(UInt(arc4random_uniform(400) + 100))
+                
+                let goLeft = arc4random_uniform(100) % 2 == 0
+                
+                var point = pointForColumn(column: block.column, row: block.row)
+                
+                point = CGPoint(x: point.x + (goLeft ? -randomRadius : randomRadius), y: point.y)
+                
+                let randomDuration = TimeInterval(arc4random_uniform(2)) + 0.5
+                
+                // choose starting andles for the explosions
+                var startAngle = CGFloat(Double.pi)
+                var endAngle = startAngle * 2
+                
+                if goLeft {
+                    endAngle = startAngle
+                    startAngle = 0
+                }
+                let archPath = UIBezierPath(arcCenter: point, radius: randomRadius, startAngle: startAngle, endAngle: endAngle, clockwise: goLeft)
+                let archAction = SKAction.follow(archPath.cgPath, asOffset: false, orientToPath: true, duration: randomDuration)
+                archAction.timingMode = .easeIn
+                let sprite = block.sprite!
+                
+                // place about others so that it doesnt animate the ones still in play
+                sprite.zPosition = 100
+                sprite.run(SKAction.sequence([SKAction.group([archAction, SKAction.fadeOut(withDuration: TimeInterval(randomDuration))]), SKAction.removeFromParent()]))
+            }
+        }
+        // run completion after the duration has expired
+        run(SKAction.wait(forDuration: longestDuration),completion:completion)
     }
 }
